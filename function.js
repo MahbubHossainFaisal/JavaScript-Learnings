@@ -1,42 +1,23 @@
-//functions returning functions
+//Immediately Invoked Function expression (IIFE)
 
 
-function question(job){
+//without passing parameters
+(function (){
 
-	if(job === 'Developer'){
-		//returning anonymous function
-		return function(name){
-			console.log('Hi ' + name + ', What type of developer you are?');
-		}
-	}
-
-	else if(job === 'Designer'){
-		//returning anonymous function
-		return function (name) {
-			
-			console.log('Hi ' + name + ', What type of designer you are? UI/UX?');
-		}
-	}
-
-	else if( job === 'Student'){
-		//returning anonymous function
-		return function( name ){
-			console.log('Hi ' + name + ', What you study?');
-		}
-	}
-}
+	var score = Math.random()*10;
+	console.log(score >= 5);
+} ) (); //IIFE means we don't have to call this function . It will call automatically itself .
 
 
 
-var ask = question('Developer');
+//with parameters passing
 
-ask('Faisal');
+(function (el){
 
-var ask = question('Designer');
+	var score = Math.random()*10;
+	console.log(score >= 5);
+	console.log(el);
+})('good luck!');   //IIFE means we don't have to call this function . It will call automatically itself .
 
-ask('Ashik');
 
-var ask = question('Student');
-
-ask('Saina');
-
+//IIFE is also used for data privacy.
