@@ -1,38 +1,42 @@
-//Passing functions as arguments
-
-var birthYear = [1990,1988,1996,1992,1998];
-
-function calcAge(cal){
-	return 2020 - cal ;
-}
+//functions returning functions
 
 
+function question(job){
 
-function storingAge(birthYear,calcAge) {
-	
-	var age = [];
-	
-	for(var i = 0 ; i < birthYear.length; i++){
-
-		age.push(calcAge(birthYear[i])); //here calcAge function is passing as arguments 
+	if(job === 'Developer'){
+		//returning anonymous function
+		return function(name){
+			console.log('Hi ' + name + ', What type of developer you are?');
+		}
 	}
-	return age;
-	
+
+	else if(job === 'Designer'){
+		//returning anonymous function
+		return function (name) {
+			
+			console.log('Hi ' + name + ', What type of designer you are? UI/UX?');
+		}
+	}
+
+	else if( job === 'Student'){
+		//returning anonymous function
+		return function( name ){
+			console.log('Hi ' + name + ', What you study?');
+		}
+	}
 }
 
 
-function isFullAge(el){
-	return el >= 28 ;
-}
 
+var ask = question('Developer');
 
+ask('Faisal');
 
-var result = storingAge(birthYear,calcAge); //this variable will store the array of age after calcAge function calculates it
-// and values are pushed in the age array.
+var ask = question('Designer');
 
-console.log(result);
+ask('Ashik');
 
-var Full = storingAge(result,isFullAge); //this variable will store the boolean values returned as array
-//from the storing age function  as isFullAge function that we are passing returns boolean value.
-console.log(Full);
+var ask = question('Student');
+
+ask('Saina');
 
