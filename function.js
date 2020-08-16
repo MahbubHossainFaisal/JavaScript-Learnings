@@ -1,45 +1,42 @@
-/*
-Closures: An inner function has always access to the variables and
-parameters of it's outer function,even after the outer function has returned.
+//Call,Bind and Apply
 
-*/
+var Faisal = {
 
-function retirement(retirementAge){
-	var statement = ' years reamining for retirement.';
+	name : 'Faisal',
+	age : 23,
+	job : 'Developer',
+	presentation: function(type,timeOfDay){
 
-	return function (birthYear) {
-		var age = 2020 - birthYear;
-		console.log(retirementAge - age + statement);
+		if(type === 'Formal'){
+
+			console.log('Hello! ' + timeOfDay + 'I am '+ this.name + 
+				'. I work as a ' + this.job + ' and I am '+ this.age +' years old.');
+		} else if(type === 'Friendly'){
+
+			console.log('Hi there! ' + timeOfDay + 'I am '+ this.name + 
+				'. I work as a ' + this.job + ' and I am '+ this.age +' years old.');
+		}
 	}
-}
+};
 
+Faisal.presentation('Formal','Good Morning.');
 
- var US = retirement(66); // second (1980) is for second anonymous function parameter
- US(1980); //this will call the anonymous function
+var Tafsir = {
 
- console.log(US); // this will show the whole anonymous function . Means the US variable has stored the who anonymous function.
+	name : 'Tafsir',
+	age : 24,
+	job : 'H&R Manager'
+};
 
- //Another example of closures
+//Call method
 
- function question(job){
+Faisal.presentation.call(Tafsir,'Friendly','Good evening.');
 
- 	return function(name){
- 		if(job === 'Developer'){
- 			console.log('Hi ' + name + ' , You are a Developer');
- 		} else if(job === 'Designer'){
- 			console.log('Hi ' + name + ' , You are a Designer');
- 		} else {
+//using call method Tafsir object is calling or borrowing the property of Faisal object and using it with it's own properties.
 
- 			console.log('Hi ' + name + ' , Who are you?');
- 		}
- 		}
- 	} 
- 	/*job parameter is declared earlier and even the question function already returned something
- 	though we used the job value later in the anonymous function.this is an example of closure */
- 
- var Faisal = question('Designer');
- Faisal('Faisal');
+//Bind method: It's similar to call function but doesn't call a function directly rather generates a copy of that function
 
- var Asif = question('Developer')('Asif');
+var TafsirFormal = Faisal.presentation.bind(Tafsir,'Formal');//In bind method we can predefine methods earlier
 
- var Raihan = question()('Raihan');
+TafsirFormal('Good Noon.'); //Here we r calling just the anonymous function under the presentation property which in call method can not be done. 
+TafsirFormal('Good Morning');
