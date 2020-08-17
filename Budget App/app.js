@@ -30,13 +30,28 @@ var UIController = (function () {
 
 //Global App controller
 var controller = (function (budgetCtrl, UICtrl) {
-    var DOM = UICtrl.getDOMStrings();
+
+   var setupEventListener = function (){
+//gathering all the functions and eventlisteners together to initialize the application
+       var DOM = UICtrl.getDOMStrings();
+
+       document.querySelector(DOM.inputBtn).addEventListener("click", ctrlAddItem);
+
+       document.addEventListener("keypress", function (event) {
+           if (event.keyCode === 13 || event.which === 13) {
+               //Here we are checking that after entering values to the input field if user presses the ENTER button whose keycode is 13 .If user presses it ,it will work like the click button
+               ctrlAddItem();
+           }
+       });
+
+   } 
+   
   var ctrlAddItem = function () {
     //1. get the field input data
     
         var input = UICtrl.getInput();
         console.log(input);
-        
+
     //2. add the item in the budget controller
 
     //3. add the item to the UI controller
@@ -44,16 +59,20 @@ var controller = (function (budgetCtrl, UICtrl) {
     //4. calculate the budget
 
     //5. display the budget in the UI.
-    console.log("It works!");
+    
   };
 
-  document.querySelector(DOM.inputBtn).addEventListener("click", ctrlAddItem);
+  return {
+      init : function (){
+          console.log('The app has started!');
+          setupEventListener();
+      }
+  }
 
-  document.addEventListener("keypress", function (event) {
-    if (event.keyCode === 13 || event.which === 13) {
-      //Here we are checking that after entering values to the input field if user presses the ENTER button whose keycode is 13
-      //If user presses it ,it will work like the click button
-      ctrlAddItem();
-    }
-  });
+  
 })(budgetController, UIController);
+
+
+//We have to initiallize the event handler functions otherwise the app won't work.So below here we are declaring init function.
+
+controller.init();
