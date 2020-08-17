@@ -1,30 +1,33 @@
 //budget controller module under IIFE
 
-var budgetController = (function () {
-  var x = 23; // to access this variable from outside we later return this as function.Else this variable can't be accessed from outside
-  var add = function (a) {
-    return x + a;
-  };
+var budgetController = (function () {})();
 
-  return {
-    publicTest: function (b) {
-      return add(b);
-    },
-  };
-})();
-
-//ui controller module for under IIFE
 var UIController = (function () {
   // code;
 })();
 
-//now here will be another controller which will access the other two controllers as parameters so that the properties can be accessed
-
+//Global App controller
 var controller = (function (budgetCtrl, UICtrl) {
-  var z = budgetCtrl.publicTest(12); // to access this variable from outside we later return this as function.Else this variable can't be accessed from outside
-  return {
-    anotherTest: function () {
-      console.log(z);
-    },
+  var ctrlAddItem = function () {
+    //1. get the field input data
+
+    //2. add the item in the budget controller
+
+    //3. add the item to the UI controller
+
+    //4. calculate the budget
+
+    //5. display the budget in the UI.
+    console.log("It works!");
   };
+
+  document.querySelector(".add__btn").addEventListener("click", ctrlAddItem);
+
+  document.addEventListener("keypress", function (event) {
+    if (event.keyCode === 13 || event.which === 13) {
+      //Here we are checking that after entering values to the input field if user presses the ENTER button whose keycode is 13
+      //If user presses it ,it will work like the click button
+      ctrlAddItem();
+    }
+  });
 })(budgetController, UIController);
