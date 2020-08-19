@@ -1,33 +1,35 @@
-//Arrow functions
+//this keyword in arrow function.
 
-//ES5 functions
+//ES5 example
 
-const ages = [1996, 1998, 1991, 1999, 1990];
+var greenBox = {
+    color: 'Green',
+    position: 1,
+    click: function (){ //this function can access the properties using this operator but that anonymous function can't access .
+    // So we have to create a variable under this function to access the object properties so that we can access that variable in the anonymous function.
+        var property = this; // 
+        document.querySelector('.green').addEventListener('click',function (){
+            
+            var str = 'The box is ' + property.color + ' and the position is '+ property.position ;
+            alert(str);
+        });
+    }
+}
 
-var agesES5 = ages.map(function (el) {
-  return 2020 - el;
-});
+greenBox.click();
 
-console.log(agesES5);
+//In arrow function we can also use the this operator in the anonymous function also.
+//we don't have to access it using a variable in the click function like in ES5 method.
 
-// ES6 arrow function feature
+var greenBox = {
+    color: 'Green',
+    position: 1,
+    click: function () { 
+        document.querySelector('.green').addEventListener('click', ()=> {
 
-var agesES6 = ages.map((el) => 2020 - el); //we did the same thing just in one line
-console.log(agesES6);
-
-//another example using two parameters.
-
-var agesES6 = ages.map((el, index) => `Element number ${index + 1}: ${el}`);
-console.log(agesES6);
-
-//another example where there are multi lines in the arrow function.In that time we have to use the return keyword.
-
-var agesES6 = ages.map((el, index) => {
-  var success = 30;
-
-  return `Number ${index + 1} Will be successfull after ${
-    success - (2020 - el)
-  } years`;
-});
-
-console.log(agesES6);
+            var str = 'The box is ' + this.color + ' and the position is ' + this.position;
+            alert(str);
+        });
+    }
+}
+greenBox.click();
