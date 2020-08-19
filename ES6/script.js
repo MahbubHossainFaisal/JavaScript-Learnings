@@ -1,37 +1,33 @@
-//Strings
+//Arrow functions
 
-//in ES5
+//ES5 functions
 
-let firstname = "Mahbub";
-let lastname = "Hossain";
-const yearOfBirth = 1998;
+const ages = [1996, 1998, 1991, 1999, 1990];
 
-function calculateAge(year) {
-  return 2020 - year;
-}
+var agesES5 = ages.map(function (el) {
+  return 2020 - el;
+});
 
-console.log(
-  "Hi,I am " +
-    firstname +
-    " " +
-    lastname +
-    ".I am " +
-    calculateAge(yearOfBirth) +
-    " years old."
-);
+console.log(agesES5);
 
-//ES6 makes it easier by using backticks ``;
+// ES6 arrow function feature
 
-console.log(
-  `Hi,I am ${firstname} ${lastname}.I am ${calculateAge(
-    yearOfBirth
-  )} years old.`
-);
+var agesES6 = ages.map((el) => 2020 - el); //we did the same thing just in one line
+console.log(agesES6);
 
-// some new string methods in ES6
-//boolean method : startsWith(),ednsWith(),includes(),repeat()
-const name = `${firstname} ${lastname}`;
-console.log(name.startsWith("f")); //will give a false result.
-console.log(name.endsWith("ain")); //will return true;
-console.log(name.includes("bub")); //will return true; this is used to search a middle substring
-console.log(`${firstname} `.repeat(10)); //this will repeat the firstname for 10 times. we use the backticks method to give a space after every word.
+//another example using two parameters.
+
+var agesES6 = ages.map((el, index) => `Element number ${index + 1}: ${el}`);
+console.log(agesES6);
+
+//another example where there are multi lines in the arrow function.In that time we have to use the return keyword.
+
+var agesES6 = ages.map((el, index) => {
+  var success = 30;
+
+  return `Number ${index + 1} Will be successfull after ${
+    success - (2020 - el)
+  } years`;
+});
+
+console.log(agesES6);
