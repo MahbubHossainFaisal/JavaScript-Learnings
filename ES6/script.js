@@ -1,31 +1,53 @@
-//Example 3 of arrow function
+//Destructuring 
 
-//in ES5
+//In ES5
 
-//function constructor
+var arr = ['Faisal',22];
+var name = arr[0];
+var age = arr[1];
+console.log(name);
+console.log(age);
 
-function Person(name) {
-  this.name = name;
+//In ES6
+
+const [Name,Age] = ['Faisal', 22]; //Destructuring method
+console.log(Name);
+console.log(Age);
+
+
+//In ES5
+
+var obj = {
+    firstname: 'Mahbub',
+    lastname: 'Hossain'
+};
+
+console.log(obj.firstname);
+console.log(obj.lastname);
+
+//In ES6
+var Obj = {
+    firstname: 'Mahbub',
+    lastname: 'Hossain'
+};
+const {firstname,lastname} = Obj; //Use of destructuring
+console.log(firstname);
+console.log(lastname);
+
+//We can also change the variable name while making a copy of the Obj object like below
+const { firstname:a, lastname:b } = Obj; //Use of destructuring
+console.log(a);
+console.log(b);
+
+//Another example using a function
+
+function calulate(year){
+    var age=new Date().getFullYear()-year;
+
+    return [age,65-age]; //suppose 65 is the retirement age.
+
 }
 
-var Friends = ["Sakib", "Robin", "Asfique", "Imran"];
-
-Person.prototype.friendsES5 = function (Friends) {
-  var arr = Friends.map(
-    function (el) {
-      return this.name + " is friend with " + el;
-    }.bind(this) //we have to use bind method to make that anonymous function use 'this' properties else it cannot.
-  );
-  console.log(arr);
-};
-
-new Person("Faisal").friendsES5(Friends);
-
-//ES6
-
-Person.prototype.friendsES6 = function (Friends) {
-  var arr = Friends.map((el) => `${this.name} is friend with ${el}`); //just did it in one line with ease
-  console.log(arr);
-};
-
-new Person("Anoy").friendsES6(Friends);
+const [personAge,Retirement]=calulate(1998);//use of destructuring
+console.log(personAge);
+console.log(Retirement);
