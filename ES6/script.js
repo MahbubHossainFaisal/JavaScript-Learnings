@@ -1,22 +1,37 @@
-//Blocks and IIFE
+//Strings
 
-//In ES5 there were IIFEs
-(function () {
-  var a = 23;
-  console.log(a);
-})();
-//console.log(a);will give an error! as it is outside the IIFE
+//in ES5
 
-//In ES6 there is Blocks which is more easier to define and get data privacy
+let firstname = "Mahbub";
+let lastname = "Hossain";
+const yearOfBirth = 1998;
 
-{
-  let a = 20;
-  const b = 30;
-  var c = 15;
-  console.log(a);
-  console.log(b);
-  console.log(c);
+function calculateAge(year) {
+  return 2020 - year;
 }
-//console.log(a); //Will give errors
-//console.log(b);//will give errors
-console.log(c); //This will give no error because we use var this time and it can show values even outside the scope or block.
+
+console.log(
+  "Hi,I am " +
+    firstname +
+    " " +
+    lastname +
+    ".I am " +
+    calculateAge(yearOfBirth) +
+    " years old."
+);
+
+//ES6 makes it easier by using backticks ``;
+
+console.log(
+  `Hi,I am ${firstname} ${lastname}.I am ${calculateAge(
+    yearOfBirth
+  )} years old.`
+);
+
+// some new string methods in ES6
+//boolean method : startsWith(),ednsWith(),includes(),repeat()
+const name = `${firstname} ${lastname}`;
+console.log(name.startsWith("f")); //will give a false result.
+console.log(name.endsWith("ain")); //will return true;
+console.log(name.includes("bub")); //will return true; this is used to search a middle substring
+console.log(`${firstname} `.repeat(10)); //this will repeat the firstname for 10 times. we use the backticks method to give a space after every word.
