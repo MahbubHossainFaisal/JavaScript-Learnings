@@ -1,35 +1,31 @@
-//this keyword in arrow function.
+//Example 3 of arrow function
 
-//ES5 example
+//in ES5
 
-var greenBox = {
-    color: 'Green',
-    position: 1,
-    click: function (){ //this function can access the properties using this operator but that anonymous function can't access .
-    // So we have to create a variable under this function to access the object properties so that we can access that variable in the anonymous function.
-        var property = this; // 
-        document.querySelector('.green').addEventListener('click',function (){
-            
-            var str = 'The box is ' + property.color + ' and the position is '+ property.position ;
-            alert(str);
-        });
-    }
+//function constructor
+
+function Person(name) {
+  this.name = name;
 }
 
-greenBox.click();
+var Friends = ["Sakib", "Robin", "Asfique", "Imran"];
 
-//In arrow function we can also use the this operator in the anonymous function also.
-//we don't have to access it using a variable in the click function like in ES5 method.
+Person.prototype.friendsES5 = function (Friends) {
+  var arr = Friends.map(
+    function (el) {
+      return this.name + " is friend with " + el;
+    }.bind(this) //we have to use bind method to make that anonymous function use 'this' properties else it cannot.
+  );
+  console.log(arr);
+};
 
-var greenBox = {
-    color: 'Green',
-    position: 1,
-    click: function () { 
-        document.querySelector('.green').addEventListener('click', ()=> {
+new Person("Faisal").friendsES5(Friends);
 
-            var str = 'The box is ' + this.color + ' and the position is ' + this.position;
-            alert(str);
-        });
-    }
-}
-greenBox.click();
+//ES6
+
+Person.prototype.friendsES6 = function (Friends) {
+  var arr = Friends.map((el) => `${this.name} is friend with ${el}`); //just did it in one line with ease
+  console.log(arr);
+};
+
+new Person("Anoy").friendsES6(Friends);
