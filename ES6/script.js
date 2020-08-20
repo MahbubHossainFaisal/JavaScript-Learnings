@@ -1,24 +1,26 @@
-//Arrays in ES6
+//Loops
 
+//in ES6 we cannot use break or continue statements in forEach loop and also in map
 
-//in ES5
+var boxes = document.querySelectorAll(".box");
 
-const Boxes = document.querySelectorAll('.box'); //this will return a node
+var ES5Boxes = Array.prototype.slice.call(boxes);
 
-var ES5Boxes = Array.prototype.slice.call(Boxes);//making it array
+for (var i = 0; i < ES5Boxes.length; i++) {
+  if (ES5Boxes[i].className === "box blue") {
+    continue;
+  }
+  ES5Boxes[i].textContent = "YOU FOOL!";
+}
 
-ES5Boxes.forEach(function(el){
-    el.style.backgroundColor = 'dodgerblue';
-});
+//In ES6 we have For off loop which works like forEach loop but can use continue and break
+var Boxes = document.querySelectorAll(".box");
+var ES6Boxes = Array.from(Boxes); //Array.from is an ES6 method.
 
-//In ES6
-
-const boxes = document.querySelectorAll('.box');
-
-var ES6Boxes = Array.from(boxes);
-
-ES6Boxes.forEach((el)=> el.style.backgroundColor = 'orangered');
-
-
-
-
+for (const el of ES6Boxes) {
+  if (el.className.includes("blue")) {
+    //.includes is a new ES6 string method.
+    continue;
+  }
+  el.textContent = "YOU FOOL TOO!";
+}
