@@ -1,53 +1,24 @@
-//Destructuring 
-
-//In ES5
-
-var arr = ['Faisal',22];
-var name = arr[0];
-var age = arr[1];
-console.log(name);
-console.log(age);
-
-//In ES6
-
-const [Name,Age] = ['Faisal', 22]; //Destructuring method
-console.log(Name);
-console.log(Age);
+//Arrays in ES6
 
 
-//In ES5
+//in ES5
 
-var obj = {
-    firstname: 'Mahbub',
-    lastname: 'Hossain'
-};
+const Boxes = document.querySelectorAll('.box'); //this will return a node
 
-console.log(obj.firstname);
-console.log(obj.lastname);
+var ES5Boxes = Array.prototype.slice.call(Boxes);//making it array
+
+ES5Boxes.forEach(function(el){
+    el.style.backgroundColor = 'dodgerblue';
+});
 
 //In ES6
-var Obj = {
-    firstname: 'Mahbub',
-    lastname: 'Hossain'
-};
-const {firstname,lastname} = Obj; //Use of destructuring
-console.log(firstname);
-console.log(lastname);
 
-//We can also change the variable name while making a copy of the Obj object like below
-const { firstname:a, lastname:b } = Obj; //Use of destructuring
-console.log(a);
-console.log(b);
+const boxes = document.querySelectorAll('.box');
 
-//Another example using a function
+var ES6Boxes = Array.from(boxes);
 
-function calulate(year){
-    var age=new Date().getFullYear()-year;
+ES6Boxes.forEach((el)=> el.style.backgroundColor = 'orangered');
 
-    return [age,65-age]; //suppose 65 is the retirement age.
 
-}
 
-const [personAge,Retirement]=calulate(1998);//use of destructuring
-console.log(personAge);
-console.log(Retirement);
+
