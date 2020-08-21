@@ -1,21 +1,4 @@
-//Class in ES6
-
-//In ES5 we do it like this.
-
-var ES5 = function (name, yearOfBirth, job) {
-  this.name = name;
-  this.yearOfBirth = yearOfBirth;
-  this.job = job;
-};
-
-ES5.prototype.calculateAge = function () {
-  return 2020 - this.yearOfBirth;
-};
-
-var Faisal = new ES5("Faisal", 1997, "Developer");
-
-console.log(Faisal.calculateAge());
-
+//Classes with subclasses or inheritence in ES6
 //In ES6 we will use class
 
 class ES6 {
@@ -27,14 +10,25 @@ class ES6 {
   calculateAge() {
     return 2020 - this.yearOfBirth;
   }
+}
 
-  static greetings() {
-    //we cannot use this method in the instances because they can't inherit it.
-    console.log("Hi there!");
+class Person extends ES6 {
+  //inhereting the ES6 class by the extends keyword.
+  constructor(name, yearOfBirth, job, height, weight) {
+    super(name, yearOfBirth, job); //calling the parent class parameterised constructor
+    this.height = height;
+    this.weight = weight;
+  }
+
+  show() {
+    console.log(
+      `Name: ${this.name},height is : ${this.height} feet,weight is ${this.weight} kg.`
+    );
   }
 }
 
 var shanta = new ES6("Shanta", 1991, "QC Officer");
 console.log(shanta.calculateAge());
 
-ES6.greetings(); // we have to call those static functions like this using the class name.
+var Faisal = new Person("Faisal", "1996", "Developer", 5.5, 62);
+console.log(Faisal.show());
