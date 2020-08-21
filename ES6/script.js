@@ -1,41 +1,40 @@
-//Map in ES6
+//Class in ES6
 
-var question = new Map();
-//set operation.
-question.set(
-  "question",
-  "What is the official name of major JavaScript version?"
-);
-question.set(1, "ES5");
-question.set(2, "ES6");
-question.set(3, "ES2015");
-question.set(4, "ES7");
-question.set("correct", 3);
-question.set(true, "Correct answer :D");
-question.set(false, "Wrong answer!Try again.");
-//get operation
-console.log(question.get("question"));
-console.log(question.get(3));
-console.log(question.get(false));
-if (question.has(false)); //has operation.
-console.log(question.get(4));
+//In ES5 we do it like this.
 
-//delete operator
-question.delete(4);
-console.log(question);
+var ES5 = function (name, yearOfBirth, job) {
+  this.name = name;
+  this.yearOfBirth = yearOfBirth;
+  this.job = job;
+};
 
-//clear operator to delete all.
-//question.clear();
+ES5.prototype.calculateAge = function () {
+  return 2020 - this.yearOfBirth;
+};
 
-//We can use for off loop to iterate through the map;
+var Faisal = new ES5("Faisal", 1997, "Developer");
 
-for (let [key, value] of question.entries()) {
-  if (typeof key == "number") {
-    console.log(`Answer ${key} : ${value}`);
+console.log(Faisal.calculateAge());
+
+//In ES6 we will use class
+
+class ES6 {
+  constructor(name, yearOfBirth, job) {
+    this.name = name;
+    this.yearOfBirth = yearOfBirth;
+    this.job = job;
+  }
+  calculateAge() {
+    return 2020 - this.yearOfBirth;
+  }
+
+  static greetings() {
+    //we cannot use this method in the instances because they can't inherit it.
+    console.log("Hi there!");
   }
 }
 
-//another example
+var shanta = new ES6("Shanta", 1991, "QC Officer");
+console.log(shanta.calculateAge());
 
-var ans = parseInt(prompt("Write the correct answer:"));
-console.log(question.get(ans === question.get("correct"))); //ans===question.get("correct") will return true
+ES6.greetings(); // we have to call those static functions like this using the class name.
