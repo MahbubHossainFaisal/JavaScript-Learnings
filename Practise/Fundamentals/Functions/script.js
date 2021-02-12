@@ -23,3 +23,26 @@ Difference between function declaration and function expression
 we can call e function before it's declaration but we can't call e function expression before declaration . 
 
 */
+
+//Arrow function
+
+//Single line arrow function : if the function has one statement to return only 
+
+const calcAge3 = birthYear => 2021-birthYear;
+
+const age3 = calcAge3(1971);
+
+console.log(age3);
+
+//Multiline arrow function: if the functon has more than one statements under it
+
+const calcRetirement = (birthYear,name) => {
+    age = 2021-birthYear;
+    const retireAge = 65-age;
+    return `${name} will retire after ${retireAge} years`;
+}
+
+const Faisal = calcRetirement(1996,'Faisal');
+const Asif = calcRetirement(1992,'Asif');
+console.log(Faisal);
+console.log(Asif);
