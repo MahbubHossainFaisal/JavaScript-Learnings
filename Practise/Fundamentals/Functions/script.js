@@ -46,3 +46,22 @@ const Faisal = calcRetirement(1996,'Faisal');
 const Asif = calcRetirement(1992,'Asif');
 console.log(Faisal);
 console.log(Asif);
+
+
+//Function calling another function 
+
+const cutIntoPieces = (numOfFruits) => {
+    return 4*numOfFruits
+}
+
+const juiceMachine = (apple,orange) =>{
+
+    const applePiece = cutIntoPieces(apple)
+    const orangePiece = cutIntoPieces(orange)
+
+    const juice = `The juice will be created with ${applePiece} pieces of apples and ${orangePiece} pieces of oranges`
+    return juice
+}
+
+const getJuice = juiceMachine(4,5)
+console.log(getJuice)
