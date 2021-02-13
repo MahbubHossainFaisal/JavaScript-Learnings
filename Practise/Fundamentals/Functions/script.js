@@ -80,11 +80,11 @@ const checkWinner = (dolphinScore,koalaScore) => {
     
 
     let result = ''
-    if(dolphinScore > koalaScore){
+    if(dolphinScore >= 2*koalaScore){
         result = `Dolphins win (${dolphinScore} vs ${koalaScore})`
     } else if(dolphinScore === koalaScore){
-        result = `Match has been drawn by both the team`
-    } else {
+        result = `Sorry! No one wins.`
+    } else if(koalaScore >= 2*dolphinScore) {
         result = `Koalas win (${koalaScore} vs ${dolphinScore})`
     }
     return result
