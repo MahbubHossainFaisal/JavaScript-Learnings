@@ -65,3 +65,33 @@ const juiceMachine = (apple,orange) =>{
 
 const getJuice = juiceMachine(4,5)
 console.log(getJuice)
+
+
+// Coding Challange
+
+const calcAverage = (score1,score2,score3) => {
+    return (score1+score2+score3)/3
+}
+
+
+
+const checkWinner = (dolphinScore,koalaScore) => {
+
+    
+
+    let result = ''
+    if(dolphinScore > koalaScore){
+        result = `Dolphins win (${dolphinScore} vs ${koalaScore})`
+    } else if(dolphinScore === koalaScore){
+        result = `Match has been drawn by both the team`
+    } else {
+        result = `Koalas win (${koalaScore} vs ${dolphinScore})`
+    }
+    return result
+}
+const dolphinScore = parseInt(calcAverage(20,30,40))
+const koalaScore = parseInt(calcAverage(10,40,20))
+
+const winner = checkWinner(dolphinScore,koalaScore)
+
+console.log(winner)
