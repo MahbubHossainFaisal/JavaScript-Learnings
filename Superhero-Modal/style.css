@@ -18,7 +18,7 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  background: linear-gradient(to top left, #28b487, #7dd56f);
+  background: linear-gradient(to top left, 	#556B2F,#4D1A1A);
 }
 
 .show-modal {
@@ -27,7 +27,7 @@ body {
   padding: 1.75rem 3.5rem;
   margin: 5rem 2rem;
   border: none;
-  background-color: #fff;
+  background-color:	#EEE8AA;
   color: #444;
   border-radius: 10rem;
   cursor: pointer;
@@ -66,7 +66,7 @@ p {
   transform: translate(-50%, -50%);
   width: 70%;
 
-  background-color: white;
+  background-color: #FFD700;
   padding: 6rem;
   border-radius: 5px;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
