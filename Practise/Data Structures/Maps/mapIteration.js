@@ -63,14 +63,26 @@ const answer = Number(prompt('Enter your answer:'))
 
 answer === question.get('answer') ? console.log(question.get(true)) : console.log(question.get(false))
 
+//converting map to array
+const arr = [...question] // it will convert the map to a 2d array
+
+console.log(arr[0][0])
+console.log(arr[0][1])
+
+
 //map properties
 
 console.log(question.entries())
 console.log(question.keys())
 console.log(question.values())
 
-//converting map to array
-const arr = [...question] // it will convert the map to a 2d array
+// we can take all the individual properties of map and make them an array
+//say we want an array with all the keys of the map
 
-console.log(arr[0][0]) 
-console.log(arr[0][1])
+const keyArray = [...question.keys()]
+console.log(keyArray)
+
+//say we want an array with all the values of the map
+const valueArray = [...question.values()]
+console.log(valueArray)
+
