@@ -46,3 +46,5 @@ const arr = ['Asif', 'Raihan', 'Sagor']
 arr.forEach(print) // passing the callback function inside of foreach method.As foreach passing a function, so it is a hof too
 
 //Higher order functions create abstractions
+
+
